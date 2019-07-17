@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png.ico') }}">
+    <meta name="description" content="">
+    <title>{% block title %}{% endblock %} | Megafonn Akademi</title>
+    <!-- Favicon -->
+    <link href="http://courseplus.theme4u.ml/assets/img/brand/favicon.png" rel="icon" type="image/png">
+    <!-- Your stylesheet-->
+    <link rel="stylesheet" href="{{ asset('assets/css/uikit.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.css') }}">
+    <!--  javascript -->
+    <script src="{{ asset('assets/js/simplebar.js') }}"></script>
+    <script src="{{ asset('assets/js/uikit.js') }}"></script>
+</head>
+<body>
+{% block content %}{% endblock %}
+<!--  Night mood -->
+<script>
+    (function (window, document, undefined) {
+        'use strict';
+        if (!('localStorage' in window)) return;
+        var nightMode = localStorage.getItem('gmtNightMode');
+        if (nightMode) {
+            document.documentElement.className += ' night-mode';
+        }
+    })(window, document);
+
+
+    (function (window, document, undefined) {
+
+        'use strict';
+
+        // Feature test
+        if (!('localStorage' in window)) return;
+
+        // Get our newly insert toggle
+        var nightMode = document.querySelector('#night-mode');
+        if (!nightMode) return;
+
+        // When clicked, toggle night mode on or off
+        nightMode.addEventListener('click', function (event) {
+            event.preventDefault();
+            document.documentElement.classList.toggle('night-mode');
+            if ( document.documentElement.classList.contains('night-mode') ) {
+                localStorage.setItem('gmtNightMode', true);
+                return;
+            }
+            localStorage.removeItem('gmtNightMode');
+        }, false);
+
+    })(window, document);
+
+    // Preloader
+    var spinneroverlay = document.getElementById("spinneroverlay");
+    window.addEventListener('load', function(){
+        spinneroverlay.style.display = 'none';
+    });
+
+
+</script>
+</body>
+</html>
